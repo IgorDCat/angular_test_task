@@ -1,1 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 14px;
+}
 
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: #2d6fb1;
+
+    &:hover {
+        color: darkgray;
+    }
+
+    &.active {
+        color: aliceblue;
+    }
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0 auto;
+    min-width: 320px;
+    overflow-x: hidden;
+    position: relative;
+}
