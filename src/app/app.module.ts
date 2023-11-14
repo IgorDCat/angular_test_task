@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ReportsComponent } from './reports/reports.component';
 import { BillingComponent } from './billing/billing.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,11 +22,13 @@ import { BillingComponent } from './billing/billing.component';
         ReportsComponent,
         BillingComponent
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        CoreModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
     providers: [],
     bootstrap: [AppComponent]
 })
