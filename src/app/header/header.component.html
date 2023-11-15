@@ -1,9 +1,20 @@
 <div class='header'>
     <p>{{ headerData?.firstName }} {{ headerData?.lastName }}</p>
-    <a routerLink='profile'>
+    <a routerLink='profile' *ngIf='isAuth'>
         Profile
     </a>
-    <button>Logout</button>
+    <button
+        *ngIf='!isAuth'
+        (click)='authService.login()'
+    >
+        Login
+    </button>
+    <button
+        *ngIf='isAuth'
+        (click)='authService.logout()'
+    >
+        Logout
+    </button>
     <span *ngIf='isUpdate' class='successCloud'>
         updated
         <button (click)='isUpdate = false' class='clearBtn'>

@@ -4,10 +4,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ReportsComponent } from './reports/reports.component';
 import { BillingComponent } from './billing/billing.component';
+import { AuthGuard } from '../core/services/auth.guard';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'inventory', component: InventoryComponent },
     { path: 'reports', component: ReportsComponent },
     { path: 'billing', component: BillingComponent },

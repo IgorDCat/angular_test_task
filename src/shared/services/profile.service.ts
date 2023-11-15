@@ -9,6 +9,7 @@ import { ProfileUpdateService } from './profile-update.service';
 export class ProfileService {
     constructor(private profileUpdateService: ProfileUpdateService) {
     }
+
     profileData: Profile = {
         email: 'example@mail.ru',
         firstName: 'MyFirstName',
