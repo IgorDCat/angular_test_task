@@ -10,4 +10,10 @@
             x
         </button>
     </span>
+    <span *ngIf='isUpdateError' class='errorCloud'>
+        firstname/lastname too short
+        <button (click)='isUpdateError = false' class='clearBtn'>
+            x
+        </button>
+    </span>
 </div>

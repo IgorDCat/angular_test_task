@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Profile } from '../../app/profile/profile.model';
-import { Observable } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
+import { ProfileUpdateService } from './profile-update.service';
 
-Injectable({
+@Injectable({
     providedIn: 'root'
 })
 export class ProfileService {
+    constructor(private profileUpdateService: ProfileUpdateService) {
+    }
     profileData: Profile = {
         email: 'example@mail.ru',
         firstName: 'MyFirstName',
@@ -14,9 +17,16 @@ export class ProfileService {
         websiteUrl: ''
     }
 
-    public getProfile$ = new Observable<Profile>(observer => {
+    getProfile$ = new Observable<Profile>(observer => {
         setTimeout(() => {
             observer.next(this.profileData)
         }, 500)
     })
+
+    isLengthOfFieldShort (value: Profile) {
+        return of(value.firstName.length <= 1 || value.lastName.length <= 1).pipe(
+            delay(500)
+        ).subscribe(res => res && this.profileUpdateService.setError())
+    }
+
 }

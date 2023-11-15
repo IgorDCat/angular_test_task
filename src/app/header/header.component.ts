@@ -11,16 +11,18 @@ import { ProfileUpdateService } from '../../shared/services/profile-update.servi
 export class HeaderComponent implements OnInit {
     headerData: Profile | undefined
     isUpdate = false
+    isUpdateError = false
 
     constructor(
         private profileService: ProfileService,
-        public successUpdateService: ProfileUpdateService
+        public profileUpdateService: ProfileUpdateService
     ) {
     }
 
     ngOnInit(): void {
         this.profileService.getProfile$.subscribe((value: Profile) => this.headerData = value)
-        this.successUpdateService.isUpdated.subscribe(res => this.isUpdate = res)
+        this.profileUpdateService.isUpdated.subscribe(res => this.isUpdate = res)
+        this.profileUpdateService.isError.subscribe(res => this.isUpdateError = res)
     }
 
 }
