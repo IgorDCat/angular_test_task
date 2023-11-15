@@ -1,7 +1,22 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Profile } from '../../app/profile/profile.model';
+import { Observable } from 'rxjs';
 
-Injectable()
+Injectable({
+    providedIn: 'root'
+})
 export class ProfileService {
-    public get profile$() { return of({}); }
+    profileData: Profile = {
+        email: 'example@mail.ru',
+        firstName: 'MyFirstName',
+        lastName: 'MyLastName',
+        phoneNumber: '+70000000000',
+        websiteUrl: ''
+    }
+
+    public getProfile$ = new Observable<Profile>(observer => {
+        setTimeout(() => {
+            observer.next(this.profileData)
+        }, 500)
+    })
 }

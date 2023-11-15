@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Profile } from './profile.model';
+import { ProfileUpdateService } from '../../shared/services/profile-update.service';
 
 @Component({
     selector: 'app-profile',
@@ -11,7 +13,8 @@ export class ProfileComponent implements OnInit {
     maxNameLength = 255
     requiredFieldMessage = 'error: field is required'
 
-    constructor() {
+    constructor(private successUpdateService: ProfileUpdateService) {
+
         this.form = new FormGroup({
             email: new FormControl({value: 'example@mail.ru', disabled: true}, [
                 Validators.email
@@ -40,9 +43,10 @@ export class ProfileComponent implements OnInit {
     }
 
     submitProfileForm() {
-        const formValues = this.form.value
+        const formValues: Profile = this.form.value
         formValues.phoneNumber = '+7'.concat(this.form.value.phoneNumber)
         console.log(formValues)
+        this.successUpdateService.setUpdated()
     }
 
 }

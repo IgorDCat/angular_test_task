@@ -1,7 +1,13 @@
 <div class='header'>
-    <p>First Name, Last Name</p>
+    <p>{{ headerData?.firstName }} {{ headerData?.lastName }}</p>
     <a routerLink='profile'>
         Profile
     </a>
     <button>Logout</button>
+    <span *ngIf='isUpdate' class='successCloud'>
+        updated
+        <button (click)='isUpdate = false' class='clearBtn'>
+            x
+        </button>
+    </span>
 </div>
